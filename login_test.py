@@ -19,7 +19,7 @@ def test_valid_login():
         print("Testing: Valid login")
         login(driver, "standard_user", "secret_sauce")
         assert "inventory" in driver.current_url
-        print("✅ Successful login")
+        print("Successful login")
     finally:
         driver.quit()
 
@@ -31,7 +31,7 @@ def test_invalid_login():
         login(driver, "locked_out_user", "secret_sauce")
         error_msg = driver.find_element(By.CLASS_NAME, "error-message-container").text
         assert "locked out" in error_msg.lower()
-        print("✅ Locked out user message displayed")
+        print("Locked out user message displayed")
     finally:
         driver.quit()
 
@@ -43,7 +43,7 @@ def test_invalid_username_password():
         login(driver, "wrong_user", "wrong_pass")
         error = driver.find_element(By.CLASS_NAME, "error-message-container").text
         assert "username and password do not match" in error.lower() or "epic sadface" in error.lower()
-        print("✅ Error message displayed for invalid credentials")
+        print("Error message displayed for invalid credentials")
     finally:
         driver.quit()
 
@@ -55,7 +55,7 @@ def test_empty_username_password():
         login(driver, "", "")
         error = driver.find_element(By.CLASS_NAME, "error-message-container").text
         assert "username and password do not match" in error.lower() or "epic sadface" in error.lower()
-        print("✅ Error message displayed for invalid credentials")
+        print("Error message displayed for invalid credentials")
     finally:
         driver.quit()
 
