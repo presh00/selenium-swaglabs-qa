@@ -20,7 +20,7 @@ def test_add_to_cart():
         driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
         cart_items = driver.find_elements(By.CLASS_NAME, "cart_item")
         assert len(cart_items) == 1
-        print("✅ Item successfully added to cart")
+        print(" Item successfully added to cart")
     finally:
         driver.quit()
 
@@ -35,7 +35,7 @@ def test_remove_from_cart():
         driver.find_element(By.CLASS_NAME, "cart_button").click()
         cart_items = driver.find_elements(By.CLASS_NAME, "cart_item")
         assert len(cart_items) == 0
-        print("✅ Item removed successfully")
+        print(" Item removed successfully")
     finally:
         driver.quit()
 
@@ -55,7 +55,7 @@ def test_valid_checkout():
         driver.find_element(By.ID, "finish").click()
         complete_msg = driver.find_element(By.CLASS_NAME, "complete-header").text
         assert "THANK YOU" in complete_msg.upper()
-        print("✅ Checkout completed successfully")
+        print(" Checkout completed successfully")
     finally:
         driver.quit()
 
@@ -69,7 +69,7 @@ def test_checkout_with_empty_cart():
         driver.get("https://www.saucedemo.com/checkout-step-one.html")
         page_title = driver.find_element(By.CLASS_NAME, "title").text
         assert "CHECKOUT" in page_title.upper()
-        print("🟡 Reached checkout page with empty cart (no item to purchase)")
+        print(" Reached checkout page with empty cart (no item to purchase)")
     finally:
         driver.quit()
 
@@ -87,7 +87,7 @@ def test_checkout_missing_first_name():
         driver.find_element(By.ID, "continue").click()
         error = driver.find_element(By.CLASS_NAME, "error-message-container").text
         assert "first name is required" in error.lower()
-        print("✅ Proper error for missing first name")
+        print(" Proper error for missing first name")
     finally:
         driver.quit()
 
@@ -105,7 +105,7 @@ def test_checkout_missing_last_name():
         driver.find_element(By.ID, "continue").click()
         error = driver.find_element(By.CLASS_NAME, "error-message-container").text
         assert "last name is required" in error.lower()
-        print("✅ Proper error for missing last name")
+        print(" Proper error for missing last name")
     finally:
         driver.quit()
 
@@ -123,7 +123,7 @@ def test_checkout_missing_postal_code():
         driver.find_element(By.ID, "continue").click()
         error = driver.find_element(By.CLASS_NAME, "error-message-container").text
         assert "postal code is required" in error.lower()
-        print("✅ Proper error for missing postal code")
+        print(" Proper error for missing postal code")
     finally:
         driver.quit()
 
